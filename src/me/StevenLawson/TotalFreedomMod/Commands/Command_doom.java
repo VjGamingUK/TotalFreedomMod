@@ -75,6 +75,19 @@ public class Command_doom extends TFM_Command
 
         // Shoot the player in the sky
         player.setVelocity(player.getVelocity().clone().add(new Vector(0, 20, 0)));
+        
+        new BukkitRunnable()
+        {
+            @Override
+            public void run()
+            {
+                for (final Player player : server.getOnlinePlayers())
+                {
+                    // Woman screaming sound
+                    player.playSound(player.getLocation(), Sound.WOLF_HOWL, 5, 5);
+                }
+            }
+        }.runTaskLater(plugin, 2L * 20);
 
         new BukkitRunnable()
         {
